@@ -1,15 +1,16 @@
-"use client";
 import {ThemeSwitcher} from "@/components/ThemeSwitcher";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import {useT} from "../../../public/hook/UseT";
 
-export default function Header({ locale }: { locale: "en" | "zh" }) {
+export default function Header() {
+    const t = useT();
     return (
         <header className="bg-white dark:bg-gray-900">
             <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex-1 md:flex md:items-center md:gap-12">
                         <a className="block text-teal-600" href="#">
-                            <span>PG-Notebook</span>
+                            <span>{t.header_Home}</span>
                         </a>
                     </div>
                 </div>
@@ -20,7 +21,7 @@ export default function Header({ locale }: { locale: "en" | "zh" }) {
                                 <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
                                    href="/"
                                 >
-                                    About
+                                    {t.header_About}
                                 </a>
                             </li>
 
@@ -29,7 +30,7 @@ export default function Header({ locale }: { locale: "en" | "zh" }) {
                                     className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
                                     href="/"
                                 >
-                                    White Paper
+                                    {t.header_WhitePaper}
                                 </a>
                             </li>
                         </ul>
@@ -42,7 +43,7 @@ export default function Header({ locale }: { locale: "en" | "zh" }) {
                                 className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 dark:hover:bg-teal-500"
                                 href="#"
                             >
-                                Connect Wallet
+                                {t.header_ConnectWallet}
                             </a>
                         </div>
 
