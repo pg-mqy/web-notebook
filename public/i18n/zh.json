@@ -1,3 +1,7 @@
 {
-  "page": "你好"
+  "page": "你好",
+  "header_Home": "泡椒-记事本",
+  "header_WhitePaper": "白皮书",
+  "header_ConnectWallet": "连接钱包",
+  "header_About": "关于"
 }
