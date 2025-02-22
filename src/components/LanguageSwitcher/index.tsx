@@ -33,10 +33,16 @@ const LanguageSwitcher = () => {
     };
 
     return (
-        <select value={currentLocale} onChange={changeLanguage}>
-            <option value="en">English</option>
-            <option value="zh">中文</option>
-        </select>
+        <div>
+            <select
+                value={currentLocale}
+                onChange={changeLanguage}
+                className="px-3 py-2 border rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-md transition-all hover:scale-105 focus:outline-none"
+            >
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
     );
 };
 

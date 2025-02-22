@@ -5,4 +5,4 @@ const i18n = {
     zh: () => import("./zh.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale) => i18n[locale]();
+export const getI18n = async (locale) => i18n[locale]();

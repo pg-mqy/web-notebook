@@ -15,12 +15,10 @@ export function ThemeSwitcher() {
         return null
     }
     return (
-        <div>
-            <p>当前主题: {theme}</p>
-            <select value={theme} onChange={e => setTheme(e.target.value)}>
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-            </select>
+        <div className="theme-switcher">
+            <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+                {theme === "light" ? "🌙" : "🌞"}
+            </button>
         </div>
     );
 }
