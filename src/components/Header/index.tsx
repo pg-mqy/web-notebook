@@ -1,9 +1,12 @@
 import {ThemeSwitcher} from "@/components/ThemeSwitcher";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import {useT} from "../../../public/hook/UseT";
+import {useT} from "../../../public/hooks/useT";
+import useMetaMask from "../../../public/hooks/useMetaMask";
+import React from "react";
 
 export default function Header() {
     const t = useT();
+    const {account, balance, connectWallet} = useMetaMask();
     return (
         <header className="bg-white dark:bg-gray-900">
             <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -38,29 +41,23 @@ export default function Header() {
                     <div className="flex items-center gap-4">
                         <ThemeSwitcher/>
                         <LanguageSwitcher/>
-                        <div className="sm:flex sm:gap-4">
-                            <a
-                                className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 dark:hover:bg-teal-500"
-                                href="#"
-                            >
-                                {t.header_ConnectWallet}
-                            </a>
-                        </div>
-
-                        <button
-                            className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="size-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </button>
+                        {
+                            account ? (
+                                <div className="sm:flex sm:gap-4" onClick={connectWallet}>
+                                    <p><strong>账户地址:</strong> {account}</p>
+                                    <p><strong>余额:</strong> {balance} MATIC</p>
+                                </div>
+                            ) : (
+                                <div className="sm:flex sm:gap-4" onClick={connectWallet}>
+                                    <a
+                                        className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 dark:hover:bg-teal-500"
+                                        href="#"
+                                    >
+                                        {t.header_ConnectWallet}
+                                    </a>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
